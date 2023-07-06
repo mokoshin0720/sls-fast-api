@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # AWS 認証
-      - uses: aws-actions/configure-aws-credentials@v1
+      - uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-region: "ap-northeast-1"
-          role-to-assume: "arn:aws:iam::961322633902:role/github-actions-ecr-push-example-role"
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::961322633902:role/github-actions-ecr-push-example-role
 
       # ECR ログイン
       - uses: aws-actions/amazon-ecr-login@v1

@@ -5,6 +5,10 @@ import uvicorn
 app = FastAPI()
 handler = Mangum(app)
 
+@app.get("/")
+def health_check():
+    return JSONResponse({"status": "OK"})
+
 
 @app.get("/{text}")
 def read_item(text: str):

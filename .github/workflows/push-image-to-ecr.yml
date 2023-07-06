@@ -1,7 +1,10 @@
+# MEMO: arm用にビルドすると30%程度コスト削減できる
 name: Build and Push
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   build-and-push:

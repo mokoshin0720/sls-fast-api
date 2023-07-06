@@ -1,0 +1,11 @@
+name: GitHub Actions Only Main Branch
+on:
+  push:
+    branches:
+      - main
+jobs:
+  hello_main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello Main
+        run: echo "Hello Main"

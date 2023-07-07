@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from mangum import Mangum
 from fastapi.responses import JSONResponse
 import uvicorn
+
 app = FastAPI()
 handler = Mangum(app)
 

@@ -1,11 +1,8 @@
-FROM python:3.8
+FROM public.ecr.aws/lambda/python:3.8
 
-WORKDIR /code
+COPY ./src ./src
+COPY ./requirements.txt ./requirements.txt
 
-COPY ./requirements.txt /code/requirements.txt
+RUN  pip3 install -r ./requirements.txt
 
-RUN pip install --upgrade -r /code/requirements.txt
-
-COPY ./src /code/src
-
-CMD ["uvicorn", "src.server.lambda:handler"]
+CMD [ "src.server.lambda.handler" ]

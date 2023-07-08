@@ -1,9 +1,14 @@
-FROM public.ecr.aws/lambda/python:3.8
+FROM python:3.8
 
-COPY ./src ${LAMBDA_TASK_ROOT}/src
+# pycacheを生成しないようにする
+ENV PYTHONDONTWRITEBYTECODE=1
 
-COPY requirements.txt  .
+WORKDIR /code
 
-RUN  pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}" -U --no-cache-dir
+COPY ./requirements.txt /code/requirements.txt
 
-CMD [ "ls" ]
+RUN pip install --upgrade -r /code/requirements.txt
+
+COPY ./src /code/src
+
+CMD ["uvicorn", "src.server.lambda:app", "--host", "0.0.0.0", "--port", "9000"]

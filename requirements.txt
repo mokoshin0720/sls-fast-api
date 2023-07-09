@@ -2,3 +2,5 @@ numpy
 fastapi
 mangum
 Uvicorn
+sqlalchemy
+mysql-connector-python

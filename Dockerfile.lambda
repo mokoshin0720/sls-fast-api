@@ -6,6 +6,6 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --upgrade -r /code/requirements.txt
 
-COPY ./src/server.py /code/src/server.py
+COPY ./src /code/src
 
 CMD ["src.server.handler"]

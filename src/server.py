@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from mangum import Mangum
 from fastapi.responses import JSONResponse
-import uvicorn
+import src.usecase.user as user
 
 app = FastAPI()
 handler = Mangum(app)
@@ -10,11 +10,6 @@ handler = Mangum(app)
 def health_check():
     return JSONResponse({"status": "OK"})
 
-
-@app.get("/{text}")
-def read_item(text: str):
-    return JSONResponse({"result": text})
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=9000)
+@app.get("/users/{user_id}")
+def get_user(user_id: int):
+    return JSONResponse({"user_id": user.say_hello(user_id)})

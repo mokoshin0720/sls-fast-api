@@ -1,6 +1,10 @@
 FROM public.ecr.aws/lambda/python:3.8
-ENV PYTHONPATH "${PYTHONPATH}:/src"
-COPY ./src /src
+ENV PYTHONPATH="${PYTHONPATH}:/src"
+
 COPY ./requirements.txt ./requirements.txt
 RUN pip install -r ./requirements.txt
+
+WORKDIR /src
+COPY ./src .
+
 CMD ["src.server.handler"]

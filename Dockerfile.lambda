@@ -1,7 +1,10 @@
 FROM public.ecr.aws/lambda/python:3.8
 
-COPY ./src ./src
+WORKDIR /code
 
-RUN pip install -r ./app/requirements.txt
+COPY requirements.txt /code/requirements.txt
+RUN pip install --upgrade -r /code/requirements.txt
 
-CMD [ "src.server.handler" ]
+COPY src /code/src
+
+CMD ["src.server.handler"]

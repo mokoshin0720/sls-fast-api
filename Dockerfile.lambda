@@ -1,8 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.8
 
-COPY ./src/server.py ${LAMBDA_TASK_ROOT}
+COPY ./src ./src
 
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt —-target "${LAMBDA_TASK_ROOT}"
+RUN pip install -r ./app/requirements.txt
 
-CMD ["src.server.handler"]
+CMD [ "src.server.handler" ]
